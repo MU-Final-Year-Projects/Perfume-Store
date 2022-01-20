@@ -1,0 +1,68 @@
+
+
+
+
+#signIn {
+    
+    
+    border: outset;
+    height: 94vh;
+    margin: 40px  300px;
+    width: 49%;
+    padding: 20px 20px;
+    
+
+}
+
+#signIn i{
+    background-image: linear-gradient(to right,#fc7095,#ff88a7,#fafafa ) ;
+     /* background-image: linear-gradient(to right,#8ad7c1,#c6fced,#f0faf7 ) ; */
+    padding: 14px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+   
+    
+
+}
+
+#signIn .input{
+    /* background-color: rgb(241, 238, 238);
+    border-color: rgb(207, 207, 207);
+    border: outset; */
+    /* margin: 10px 30px;
+    width:200px; */
+    /* height: 80px; */
+    /* margin-left: 40px; */
+    background-color: white;
+border-color: gray;
+border: outset;
+margin-top: 40px;
+     
+}
+
+
+
+#signIn .btn{
+    padding-bottom: 10px;
+    /* width: 100px; */
+    margin:10px 70px;
+    width: 100px;
+    
+    /* width: 20%; */
+    text-decoration: none;
+    
+}
+
+#signIn .btn:hover{
+    background-image: linear-gradient(to right,#fc7095,#ff88a7,#fafafa ) ;
+    }
+
+    .link{
+        text-decoration: none;
+        color: black;
+    }
+
+    .or{
+        margin-left: 90px;
+        margin-bottom: -4px;
+    }

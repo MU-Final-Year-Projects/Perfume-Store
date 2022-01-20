@@ -1,0 +1,26 @@
+#footer .input{
+    background-color: rgb(206, 204, 204);
+    border-color: gray;
+    border: outset;
+    }
+    #footer .btn{
+        width: 100%;
+    }
+    #footer p{
+        font-size: 20px;
+    }
+    #contact i{
+        color: rgb(238, 128, 146);
+    }
+    
+    .social-icon i{
+        background-color: rgb(59, 59, 59);
+        margin: 10px;
+    }
+    .social-icon i:hover{
+        background-color: rgb(235, 135, 152) ;
+    }
+
+    #footer{
+        /* margin-top: 400px; */
+    }

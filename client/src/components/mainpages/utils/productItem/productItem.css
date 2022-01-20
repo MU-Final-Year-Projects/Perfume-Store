@@ -1,0 +1,73 @@
+.offer-title{
+    padding: 10px;
+}
+
+.card {
+   
+    transition: .4s;
+    overflow: hidden;
+    float: left;
+    margin: 10px;
+    margin-left: 70px;
+    margin-top: 40px;
+    height: 279px;
+    width: 230px;
+    border:none;
+    background-color: rgb(252, 248, 248);
+    
+}
+
+/* #Offer-card .card:hover{
+  transform: scale(0.9,0.9);
+  box-shadow: 2px 2px 20px gray ;
+} */
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    
+    transition: all 1.4s ease;
+}
+.inner img:hover{
+    transform: scale(1.4);
+    
+}
+#Offer-card .card-body a{
+    color:black;
+}
+#Offer-card .card-body a:hover{
+    color:rgb(245, 140, 158);
+}
+#Offer-card .card-text{
+    color: rgb(238, 128, 146);
+}
+.card-img{
+    padding: 20px;
+    height: 170px;
+    width: 180px;
+    text-align:center;
+}
+
+
+
+.overlay{
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 90%;
+
+}
+
+.card:hover .overlay{
+    opacity: 1;
+    transition: 0.5s;
+    
+}
+
+.overlay .cart{
+    cursor: pointer;
+    font-size: 23px;
+    color: black;
+    background-image: linear-gradient(to right,#fc7095,#ff88a7,#fafafa ) ;
+
+}
