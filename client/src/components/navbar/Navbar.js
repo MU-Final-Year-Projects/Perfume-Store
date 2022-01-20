@@ -33,7 +33,8 @@ export default function Navbar() {
             <>
                 {/* <li className="nav-item "><Link class="nav-link" to="/create_product">Create Product</Link></li>
                 <li className="nav-item "><Link class="nav-link" to="/category">Categories</Link></li> */}
-                <li className="nav-item "><Link class="nav-link" to="/history"><i class="fas fa-history"></i></Link></li>
+                {/* <li className="nav-item "><Link class="nav-link" to="/history"><i class="fas fa-history"></i></Link></li> */}
+                <li className="nav-item "><Link class="nav-link" to="/dashboard">Dashboard</Link></li>
             </>
         )
     }
@@ -41,7 +42,8 @@ export default function Navbar() {
     const loggedRouter = () => {
         return (
             <>
-                {/* <li className="nav-item "><Link class="nav-link" to="/history">History</Link></li> */}
+                {/* <li className="nav-item "><Link class="nav-link" to="/about">History</Link></li> */}
+                <li className="nav-item "><Link class="nav-link" to="/about">About</Link></li>
                 <li className="nav-item "><Link class="nav-link" to="/" onClick={logoutUser}><i class="fas fa-sign-out-alt"></i><p className="logout">Log-out</p></Link></li>
             </>
         )

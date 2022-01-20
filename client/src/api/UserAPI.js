@@ -6,6 +6,8 @@ export default function UserAPI(token) {
     const [isAdmin, setIsAdmin] = useState(false)
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
+    const [user, setuser] = useState([])
+
     // const [callback, setCallback] = useState(false)
 
     useEffect(() => {
@@ -87,6 +89,7 @@ export default function UserAPI(token) {
         cart: [cart, setCart],
         addCart: addCart,
         history: [history, setHistory],
+        user: [user, setuser]
         // callback: [callback, setCallback]
     }
 

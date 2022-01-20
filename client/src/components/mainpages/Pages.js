@@ -15,6 +15,8 @@ import Popular_Product from '../popular-product/Popular_Product'
 import { SliderData } from '../popular-product/SliderData'
 import Banner from '../banner/Banner'
 import Footer from '../footer/Footer'
+import Dashboard from '../mainpages/admin_dashboard/Dashboard'
+import About from '../mainpages/about/About'
 
 import { GlobalState } from '../../GlobalState'
 
@@ -45,7 +47,9 @@ export default function Pages() {
 
                 <Route path="/login" exact component={isLogged ? NotFound : Login} />
                 <Route path="/register" exact component={isLogged ? NotFound : Register} />
+                <Route path="/about" exact component={isLogged ? About : NotFound} />
 
+                <Route path="/dashboard" exact component={isAdmin ? Dashboard : NotFound} />
                 <Route path="/category" exact component={isAdmin ? Categories : NotFound} />
                 <Route path="/create_product" exact component={isAdmin ? CreateProduct : NotFound} />
                 <Route path="/edit_product/:id" exact component={isAdmin ? CreateProduct : NotFound} />

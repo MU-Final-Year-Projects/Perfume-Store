@@ -20,24 +20,24 @@ export default function Filters() {
     }
 
 
-    const adminRouter = () => {
-        return (
-            <>
-                <div className="row">
-                    <div className="create-pro col  ">
-                        <Link class="create-link " to="/create_product"><i class="fas fa-plus-circle ">  </i>
-                        Create Product</Link>
-                    </div>
-                    {/* <div className="col"></div>
-                    <div className="col"></div> */}
-                    <div className="create-pro col  ">
-                        <Link class="create-link" to="/category"><i class="far fa-list-alt"></i>
-                        Categories</Link>
-                    </div>
-                </div>
-            </>
-        )
-    }
+    // const adminRouter = () => {
+    //     return (
+    //         <>
+    //             <div className="row">
+    //                 <div className="create-pro col  ">
+    //                     <Link class="create-link " to="/create_product"><i class="fas fa-plus-circle ">  </i>
+    //                     Create Product</Link>
+    //                 </div>
+    //                 {/* <div className="col"></div>
+    //                 <div className="col"></div> */}
+    //                 <div className="create-pro col  ">
+    //                     <Link class="create-link" to="/category"><i class="far fa-list-alt"></i>
+    //                     Categories</Link>
+    //                 </div>
+    //             </div>
+    //         </>
+    //     )
+    // }
 
 
     return (
@@ -133,7 +133,7 @@ export default function Filters() {
 
 
 
-            {isAdmin && adminRouter()}
+            {/* {isAdmin && adminRouter()} */}
 
         </>
     )

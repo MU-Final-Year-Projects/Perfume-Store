@@ -25,7 +25,7 @@ const Popular_Product = ({ slides }) => {
 
 
     return (
-        <div className="row">
+        <div className="row container-fluid">
             <div className='slider col'>
 
                 <biv className='left-arrow' onClick={prevSlide} ><i class="fas fa-chevron-right"></i> </biv>
