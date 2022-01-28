@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './login.css'
+import { use } from 'bcrypt/promises'
 
 function Register() {
     const [user, setUser] = useState({
-        name: '', email: '', password: ''
+        name: '', email: '', mobile: '', password: '', password2: ''
     })
 
     const onChangeInput = e => {
@@ -15,6 +16,10 @@ function Register() {
 
     const registerSubmit = async e => {
         e.preventDefault()
+        if (user.password != user.password2) {
+            alert("Your two passwords do not match!!!!");
+            return;
+        }
         try {
             await axios.post('/user/register', { ...user })
 
@@ -40,8 +45,16 @@ function Register() {
                     placeholder="Email" value={user.email} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
+                <input type="number" name="mobile" required
+                    placeholder="01********" value={user.mobile} onChange={onChangeInput}
+                    className="form-control form-control-lg mb-4 input" />
+
                 <input type="password" name="password" required autoComplete="on"
                     placeholder="Password" value={user.password} onChange={onChangeInput}
+                    className="form-control form-control-lg mb-4 input" />
+
+                <input type="password" name="password2" required autoComplete="on"
+                    placeholder="Confirm password" value={user.password2} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
                 <div className="row">

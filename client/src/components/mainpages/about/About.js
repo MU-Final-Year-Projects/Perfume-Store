@@ -5,24 +5,35 @@ import axios from 'axios'
 function About() {
     const params = useParams()
     const state = useContext(GlobalState)
-    const [user] = state.userAPI.user
+    const [user, setUser] = useState(null);
+    const token = localStorage.getItem('token');
 
     const [detailuser, setDetailuser] = useState([''])
 
 
     useEffect(() => {
 
-        if (params.id) {
+        if (token) {
+            const getUser = async () => {
+                try {
+                    const res = await axios.get('/user/infor', {
+                        headers: { Authorization: token }
 
-            user.forEach(user => {
-                if (user._id === params.id) setDetailuser(user)
-            })
+                    })
+                    setUser(res.data);
+
+                } catch (err) {
+                    alert(err.response.data.msg)
+                }
+            }
+            getUser();
         }
-    }, [params.id, user])
+    }, [token, user]);
 
-    if (detailuser.length === 0) return null;
+
+    if (!user) return null;
     return <div>
-        <p>{detailuser.name}</p>
+
         <div class="container">
             <div class="container px-4">
                 <div class="row  d-flex justify-content-center align-items-center">
@@ -31,24 +42,24 @@ function About() {
                     </div>
                     <div class="col-6">
                         <h2>ABOUT</h2>
-                        <div className="details ">
+                        {/* <div className="details ">
                             <label>User Id</label>
                             <p>11000000100101010</p>
-                        </div>
+                        </div> */}
 
                         <div className="details ">
-                            <label>Name::</label>
+                            <label>Name:: {user.name}</label>
                             <p></p>
                         </div>
 
                         <div className="details ">
                             <label>Email::</label>
-                            <p>tamima@gmail.com</p>
+                            <p>{user.email}</p>
                         </div>
 
                         <div className="details ">
                             <label>phone::</label>
-                            <p>1019101091</p>
+                            <p>{user.mobile}</p>
                         </div>
                     </div>
                 </div>

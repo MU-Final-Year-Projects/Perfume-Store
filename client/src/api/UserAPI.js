@@ -17,8 +17,6 @@ export default function UserAPI(token) {
                     const res = await axios.get('/user/infor', {
                         headers: { Authorization: token }
                     })
-
-
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                     //  console.log(res)

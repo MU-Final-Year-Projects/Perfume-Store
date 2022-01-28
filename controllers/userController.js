@@ -8,10 +8,12 @@ const userController = {
     register: async (req, res) => {
 
         try {
-            const { name, email, password } = req.body;
+            const { name, email, mobile, password } = req.body;
 
             const user = await Users.findOne({ email })
-            if (user) return res.status(400).json({ msg: "The email already exists." })
+            const mobile_check = await Users.findOne({ mobile })
+            if (user) return res.status(400).json({ msg: "The email already exists." });
+            if (mobile_check) return res.status(400).json({ msg: "The Number already exists." });
 
             if (password.length < 6)
                 return res.status(400).json({ msg: "Password is at least 6 characters long." })
@@ -21,7 +23,7 @@ const userController = {
             // Password Encryption
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
-                name, email, password: passwordHash
+                name, email, mobile, password: passwordHash
             })
 
 
@@ -75,7 +77,7 @@ const userController = {
 
             })
 
-            res.json({ accesstoken })
+            res.json({ accesstoken });
 
 
         } catch (err) {

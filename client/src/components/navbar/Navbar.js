@@ -43,7 +43,7 @@ export default function Navbar() {
         return (
             <>
                 {/* <li className="nav-item "><Link class="nav-link" to="/about">History</Link></li> */}
-                <li className="nav-item "><Link class="nav-link" to="/about">About</Link></li>
+                <li className="nav-item "><Link class="nav-link" to="/about">Profile</Link></li>
                 <li className="nav-item "><Link class="nav-link" to="/" onClick={logoutUser}><i class="fas fa-sign-out-alt"></i><p className="logout">Log-out</p></Link></li>
             </>
         )
