@@ -41,6 +41,10 @@ export default function Cart() {
     const increment = (id) => {
         cart.forEach(item => {
             if (item._id === id) {
+                if (item.countInStock - 1 < item.quantity) {
+                    alert("Out of stock");
+                    return;
+                }
                 item.quantity += 1
             }
         })
@@ -104,19 +108,17 @@ export default function Cart() {
             {
                 cart.map(product => (
                     <div className="detail cart" key={product._id}>
-                        <img src={product.images.url} alt="" />
+                        <img src={product.images.url} alt="" className="img-edit" />
                         <div className="box-detail">
 
-                            <h2>{product.title}</h2>
+                            <p>{product.title}</p>
 
 
-                            <span>$ {product.price * product.quantity}</span>
-                            <p>{product.description}</p>
-                            <p>{product.content}</p>
+                            <span>&#2547; {product.price} * {product.quantity} = &#2547; {product.price * product.quantity}</span>
                             <div className="amount">
-                                <button onClick={() => decrement(product._id)} > - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)} > + </button>
+                                <button className="btn btn-danger" onClick={() => decrement(product._id)} > - </button>
+                                {/* <span>{product.quantity}</span> */}
+                                <button className="btn btn-warning" onClick={() => increment(product._id)} > + </button>
                             </div>
 
                             <div className="delete pt-4 fs-3"
@@ -129,7 +131,7 @@ export default function Cart() {
                 ))
             }
             <div className="total">
-                <h3 className="total-text">Total: $ {total}</h3>
+                <h3 className="total-text">Total: &#2547; {total}</h3>
                 {/* <Link to="#!">Payment</Link> */}
                 {/* <PaypalButton
                 total={total}
@@ -137,6 +139,10 @@ export default function Cart() {
                 <PaypalButton
                     total={total}
                     tranSuccess={tranSuccess} />
+                <a className="btn btn-primary">Shipping</a>
+                <Link id="btn_view" to='/shipping'>
+                    Shipping
+                </Link>
             </div>
 
         </div>

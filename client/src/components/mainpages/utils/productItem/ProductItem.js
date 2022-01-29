@@ -50,16 +50,12 @@ export default function ProductItem({ product, isAdmin, deleteProduct, handleChe
             </div> */}
 
 
-
-
-
-
-
-
                 <div className="overlay">
                     <BtnRender product={product} deleteProduct={deleteProduct} />
                 </div>
             </div>
+
+
 
 
         </div>

@@ -64,7 +64,7 @@ function Dashboard() {
     return (
         <>
             <div className='container'>
-                <div className='row'>
+                <div className='row my-5'>
                     <div className='col-lg-4'>
                         <ul class="nav flex-column">
                             <li class="nav">
@@ -76,9 +76,9 @@ function Dashboard() {
                             <li class="nav">
                                 <a class="nav-link" href="/history">Order History</a>
                             </li>
-                            <li class="nav">
+                            {/* <li class="nav">
                                 <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
+                            </li> */}
                         </ul>
 
                     </div>
@@ -91,13 +91,13 @@ function Dashboard() {
                         </div>
                     </div>
 
-                    <div className='col-lg-4'>
+                    {/* <div className='col-lg-4'>
                         <div className='border'>
                             <h1> Order</h1>
                             <span>detailProduct.length</span>
 
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
                 {/* {isAdmin && adminRouter()} */}

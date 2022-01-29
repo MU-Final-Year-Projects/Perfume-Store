@@ -25,17 +25,18 @@ export default function BtnRender({ product, deleteProduct }) {
                             </Link>
                         </div>
                     </>
-                    : <>
-                        <div className="overlay">
-                            <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
-                                <i class="fas fa-shopping-cart rounded-circle cart"></i>
-                            </Link>
+                    : !product.countInStock ? <p>Out of stock</p> :
+                        <>
+                            <div className="overlay">
+                                <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
+                                    <i class="fas fa-shopping-cart rounded-circle cart"></i>
+                                </Link>
 
-                            <Link id="btn_view" to={`/detail/${product._id}`}>
-                                <i class="far fa-eye   rounded-circle cart"></i>
-                            </Link>
-                        </div>
-                    </>
+                                <Link id="btn_view" to={`/detail/${product._id}`}>
+                                    <i class="far fa-eye   rounded-circle cart"></i>
+                                </Link>
+                            </div>
+                        </>
 
             }
             {/* <Link id="btn_buy" to="#!" 

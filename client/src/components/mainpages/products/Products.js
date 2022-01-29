@@ -78,20 +78,23 @@ export default function Products() {
             {/* //------------------------------------------ */}
             <div>
                 {
-                    products.map(product => {
+                    products.slice(0, 8).map(product => {
                         return <ProductItem key={product._id} product={product} deleteProduct={deleteProduct} />
                         // isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
                     })
                 }
             </div>
 
+
+
+
             <LoadMore />
             {products.length === 0 && <Loading />}
 
 
             <div>
-                <Banner />
-                <Footer />
+                {/* <Banner />
+                <Footer /> */}
             </div>
 
         </>

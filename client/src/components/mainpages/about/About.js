@@ -48,8 +48,13 @@ function About() {
                         </div> */}
 
                         <div className="details ">
-                            <label>Name:: {user.name}</label>
-                            <p></p>
+                            <label>FirstName:: </label>
+                            <p>{user.firstName}</p>
+                        </div>
+
+                        <div className="details ">
+                            <label>LastName:: </label>
+                            <p>{user.lastName}</p>
                         </div>
 
                         <div className="details ">

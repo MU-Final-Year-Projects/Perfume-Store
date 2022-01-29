@@ -6,7 +6,7 @@ import { use } from 'bcrypt/promises'
 
 function Register() {
     const [user, setUser] = useState({
-        name: '', email: '', mobile: '', password: '', password2: ''
+        firstName: '', lastName: '', email: '', mobile: '', password: '', password2: ''
     })
 
     const onChangeInput = e => {
@@ -21,9 +21,11 @@ function Register() {
             return;
         }
         try {
-            await axios.post('/user/register', { ...user })
+            const res = await axios.post('/user/register', { ...user })
 
             localStorage.setItem('firstLogin', true)
+            localStorage.removeItem('token');
+            localStorage.setItem('token', res.data.accesstoken);
 
 
             window.location.href = "/";
@@ -37,15 +39,19 @@ function Register() {
             <div className="text-center mb-4"><i class="far fa-user-circle rounded-circle  "></i></div>
             <form onSubmit={registerSubmit}>
 
-                <input type="text" name="name" required
-                    placeholder="Name" value={user.name} onChange={onChangeInput}
+                <input type="text" name="firstName" required
+                    placeholder="First Name" value={user.firstName} onChange={onChangeInput}
+                    className="form-control form-control-lg mb-4 input" />
+
+                <input type="text" name="lastName" required
+                    placeholder="Last Name" value={user.lastName} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
                 <input type="email" name="email" required
                     placeholder="Email" value={user.email} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
-                <input type="number" name="mobile" required
+                <input type="tel" name="mobile" required
                     placeholder="01********" value={user.mobile} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
@@ -57,10 +63,15 @@ function Register() {
                     placeholder="Confirm password" value={user.password2} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
-                <div className="row">
-                    <button className="btn btn-outline-dark" type=" submit">Register</button>
+                <div className=" py-3 d-flex flex-row">
+                    <div>
+                        <button className="btn btn-outline-dark" type=" submit">Register</button>
+
+                    </div>
                     <p className="or">OR</p>
-                    <button className="btn btn-outline-dark " type="submit"><Link to="/login" className="link">Login</Link></button>
+                    <div>
+                        <button className="btn btn-outline-dark " type="submit"><Link to="/login" className="link">Login</Link></button>
+                    </div>
                     {/* <Link to="/login">Login</Link> */}
                 </div>
             </form>

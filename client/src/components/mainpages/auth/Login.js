@@ -48,10 +48,22 @@ export default function Login() {
                     placeholder="Password" value={user.password} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
-                <div className="row">
-                    <button className="btn btn-outline-dark " type="submit">Login</button>
+                <div className="py-3 d-flex flex-row">
+                    {/* <button className="btn btn-outline-dark " type="submit">Login</button>
                     <p className="or">OR</p>
-                    <button className="btn btn-outline-dark " type="submit"><Link to="/register" className="link">Register</Link></button>
+                    <button className="btn btn-outline-dark " type="submit"><Link to="/register" className="link">Register</Link></button> */}
+
+
+                    <div>
+
+                        <button className="btn btn-outline-dark " type="submit">Login</button>
+
+                    </div>
+                    <p className="or">OR</p>
+                    <div>
+
+                        <button className="btn btn-outline-dark " type="submit"><Link to="/register" className="link">Register</Link></button>
+                    </div>
                     {/* <Link to="/register">Register</Link> */}
                 </div>
             </form>

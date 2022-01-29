@@ -14,9 +14,10 @@ import Header from '../header/Header'
 import Popular_Product from '../popular-product/Popular_Product'
 import { SliderData } from '../popular-product/SliderData'
 import Banner from '../banner/Banner'
-import Footer from '../footer/Footer'
-import Dashboard from '../mainpages/admin_dashboard/Dashboard'
-import About from '../mainpages/about/About'
+import Footer from '../footer/Footer';
+import Dashboard from '../mainpages/admin_dashboard/Dashboard';
+import About from '../mainpages/about/About';
+import Shipping from './cart/Shipping';
 
 import { GlobalState } from '../../GlobalState'
 
@@ -36,7 +37,8 @@ export default function Pages() {
                     {/* <Banner /> */}
 
                     <Route path="/" exact component={Products} />
-
+                    <Banner />
+                    <Footer />
 
 
                 </Route>
@@ -58,6 +60,7 @@ export default function Pages() {
                 <Route path="/history/:id" exact component={isAdmin ? OrderDetails : NotFound} />
 
                 <Route path="/cart" exact component={Cart} />
+                <Route path="/shipping" exact component={Shipping} />
 
 
                 <Route path="*" exact component={NotFound} />
