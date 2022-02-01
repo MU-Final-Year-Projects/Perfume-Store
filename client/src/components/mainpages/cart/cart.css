@@ -1,24 +1,24 @@
 
 
-.full-cart{
+/* .full-cart{
     margin: 10px;
     margin-bottom: 70px;
     margin-right:40px;
     margin-left:170px;
-}
+} */
 
-.cart{
+/* .cart{
     position: relative;
     
     transform: scaleY(0.98);
     
-}
+} */
 
 .box-detail{
-    margin-top: 80px;
-    margin-left: 70px;
+    /* margin-top: 80px;
+    margin-left: 70px; */
 }
-.amount span{
+/* .amount span{
     color: crimson;
     padding: 0 20px;
 }
@@ -26,35 +26,34 @@
     width: 40px;
     height: 40px;
     border: 1px solid #777;
-}
-.delete{
+} */
+/* .delete{
     position: absolute;
     top:90;
     right: 500px;
     color: crimson;
     font-weight: 900;
     cursor: pointer;
-}
-.total{
+} */
+/* .total{
     width: 100%;
     height: 50px;
-    /* display: flex;
-    align-items: center; */
-    /* justify-content: space-between; */
+
     
     margin-left: 480px;
-}
-.total h3{
+} */
+/* .total h3{
     color: crimson;
     margin-left: 8px;
     
     padding-bottom: 10px;
 
-}
+} */
 
 .img-edit{
-    max-width: 100px !important;
-    min-width: 100px !important;
-    max-height: 100px !important;
-    min-height: 100px !important;
+    max-width: 70px !important;
+    min-width: 70px !important;
+    max-height: 70px !important;
+    min-height: 70px !important;
 }
+

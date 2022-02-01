@@ -8,6 +8,7 @@ import Filters from './Filters'
 import LoadMore from './LoadMore'
 import Banner from '../../banner/Banner'
 import Footer from '../../footer/Footer'
+import Pagination from './Pagination'
 
 export default function Products() {
     const state = useContext(GlobalState)
@@ -17,6 +18,18 @@ export default function Products() {
     const [callback, setCallback] = state.productsAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
+
+    //---------------------------------------------
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [postsPerPage] = useState(10);
+
+    // Get current posts
+    // const indexOfLastPost = currentPage * postsPerPage;
+    // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    // const currentPosts = Products.slice(indexOfFirstPost, indexOfLastPost);
+    // Change page
+    // const paginate = pageNumber => setCurrentPage(pageNumber);
+    //----------------------------------------
 
     const handleCheck = (id) => {
         products.forEach(product => {
@@ -85,11 +98,15 @@ export default function Products() {
                 }
             </div>
 
+            {/* <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={products.length}
+                paginate={paginate}
+            /> */}
 
 
-
-            <LoadMore />
-            {products.length === 0 && <Loading />}
+            {/* <LoadMore />
+            {products.length === 0 && <Loading />} */}
 
 
             <div>

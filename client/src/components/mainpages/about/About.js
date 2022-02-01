@@ -35,19 +35,26 @@ function About() {
     return <div>
 
         <div class="container">
-            <div class="container px-4">
-                <div class="row  d-flex justify-content-center align-items-center">
-                    <div class="col-6">
-                        <img src='' alt='' height={200} width={200} />
+            <div class="container  py-5">
+                {/* <h4 className=''>Welcome</h4> */}
+                <div class="  d-flex justify-content-center align-items-center">
+
+                    <div class="" height={400} width={200}>
+                        {/* <img src='' alt='' height={200} width={200} /> */}
+
+                        <i class="fas fa-user-circle  fs-1 mx-5" ></i>
                     </div>
-                    <div class="col-6">
-                        <h2>ABOUT</h2>
+                    <div class="">
+
+                        {/* <i class="fas fa-user-circle fs-1 p-5 m-5"></i> */}
+                        <h3>{user.firstName}  {user.lastName}</h3>
+                        <p>{user.email}</p>
                         {/* <div className="details ">
                             <label>User Id</label>
                             <p>11000000100101010</p>
                         </div> */}
 
-                        <div className="details ">
+                        {/* <div className="details ">
                             <label>FirstName:: </label>
                             <p>{user.firstName}</p>
                         </div>
@@ -60,12 +67,12 @@ function About() {
                         <div className="details ">
                             <label>Email::</label>
                             <p>{user.email}</p>
-                        </div>
+                        </div> */}
 
-                        <div className="details ">
+                        {/* <div className="details ">
                             <label>phone::</label>
                             <p>{user.mobile}</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

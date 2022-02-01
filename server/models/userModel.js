@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
     cart: {
         type: Array,
         default: []
+    },
+    shippingAddress: {
+        type: Array,
+        default: []
     }
 }, {
     timestamps: true

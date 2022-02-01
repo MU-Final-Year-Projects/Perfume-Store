@@ -18,6 +18,9 @@ import Footer from '../footer/Footer';
 import Dashboard from '../mainpages/admin_dashboard/Dashboard';
 import About from '../mainpages/about/About';
 import Shipping from './cart/Shipping';
+import PlaceOrder from './cart/PlaceOrder';
+
+import Pagination from './products/Pagination'
 
 import { GlobalState } from '../../GlobalState'
 
@@ -25,6 +28,8 @@ export default function Pages() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
+
+
 
     return (
         <>
@@ -37,6 +42,7 @@ export default function Pages() {
                     {/* <Banner /> */}
 
                     <Route path="/" exact component={Products} />
+
                     <Banner />
                     <Footer />
 
@@ -61,6 +67,7 @@ export default function Pages() {
 
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/shipping" exact component={Shipping} />
+                <Route path="/place_order" exact component={PlaceOrder} />
 
 
                 <Route path="*" exact component={NotFound} />

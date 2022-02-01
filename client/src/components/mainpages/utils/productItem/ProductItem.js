@@ -8,6 +8,10 @@ import axios from 'axios'
 export default function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
 
 
+
+
+
+
     return (
         <div className="product_card">
             {
@@ -30,13 +34,14 @@ export default function ProductItem({ product, isAdmin, deleteProduct, handleChe
 
 
             <div className="card row ">
+
                 <div className="inner">
                     <img src={product.images.url} alt="" className="card-img  " />
                 </div>
 
                 <div className="card-body colam text-center">
                     <h3 title={product.title}>{product.title}</h3>
-                    <span>${product.price}</span>
+                    <span>&#2547;{product.price}</span>
                     {/* <p>{product.description}</p> */}
                 </div>
                 {/* <div className="overlay">

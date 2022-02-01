@@ -78,20 +78,20 @@ export default function Cart() {
     }
 
 
-    const tranSuccess = async (payment) => {
+    // const tranSuccess = async (payment) => {
 
-        const { paymentID, address } = payment;
+    //     const { paymentID, address } = payment;
 
-        await axios.post('/api/payment', { cart, paymentID, address }, {
-            headers: { Authorization: token }
-        })
+    //     await axios.post('/api/payment', { cart, paymentID, address }, {
+    //         headers: { Authorization: token }
+    //     })
 
-        setCart([])
-        addToCart([])
-        alert("You have successfully placed an order.")
+    //     setCart([])
+    //     addToCart([])
+    //     alert("You have successfully placed an order.")
 
 
-    }
+    // }
 
 
     if (cart.length === 0)
@@ -101,50 +101,68 @@ export default function Cart() {
 
 
     return (
-        <div className="full-cart">
+        <div className="row mt-4 full-cart container-fluid">
+            <div className='col-9'>
+                <h4 className="m-4 fw-bolder ">Cart Items</h4>
 
 
 
-            {
-                cart.map(product => (
-                    <div className="detail cart" key={product._id}>
-                        <img src={product.images.url} alt="" className="img-edit" />
-                        <div className="box-detail">
-
-                            <p>{product.title}</p>
-
-
-                            <span>&#2547; {product.price} * {product.quantity} = &#2547; {product.price * product.quantity}</span>
-                            <div className="amount">
-                                <button className="btn btn-danger" onClick={() => decrement(product._id)} > - </button>
-                                {/* <span>{product.quantity}</span> */}
-                                <button className="btn btn-warning" onClick={() => increment(product._id)} > + </button>
+                {
+                    cart.map(product => (
+                        <div className="row  " key={product._id}>
+                            {/* detail cart */}
+                            <div className='col-lg-4 d-flex justify-content-center'>
+                                <img src={product.images.url} alt="" className="img-edit" />
                             </div>
 
-                            <div className="delete pt-4 fs-3"
-                                onClick={() => removeProduct(product._id)}>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
+                            <div className="row d-flex justify-content-between align-items-center box-detail ">
+                                {/* box-detail */}
 
+
+
+                                <h5 className='col-lg-4'>{product.title}</h5>
+
+
+
+
+                                <h6 className='col-lg-4'>&#2547; {product.price} × {product.quantity} = &#2547; {product.price * product.quantity}</h6>
+                                <div className="fs-4 cart-btn amount col-lg-3">
+                                    <biv className=" " onClick={() => decrement(product._id)} >  <i class="fas fa-minus-circle"></i> </biv>
+
+                                    <biv className=" " onClick={() => increment(product._id)} ><i class="fas fa-plus-circle"></i> </biv>
+                                </div>
+
+                                <div className="delete  fs-4 col-lg-1"
+                                    onClick={() => removeProduct(product._id)}>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+
+
+                            </div>
+                            <div><hr /></div>
                         </div>
-                    </div>
-                ))
-            }
-            <div className="total">
-                <h3 className="total-text">Total: &#2547; {total}</h3>
-                {/* <Link to="#!">Payment</Link> */}
-                {/* <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} /> */}
+
+                    ))
+                }
+            </div>
+            <div className="col-3  total d-flex flex-column justify-content-center align-items-center">
+                <h3 className="total-text fw-bolde mt-3 ">Total: &#2547; {total}</h3>
+
+
+                <Link id="btn_view" className='btn btn-dark my-4' to='/shipping'>
+                    PROCEED  <i class="fas fa-chevron-right ms-2"></i>
+                </Link>
+
+            </div>
+
+        </div >
+    )
+}
+
+{/* <Link to="#!">Payment</Link>
                 <PaypalButton
                     total={total}
                     tranSuccess={tranSuccess} />
-                <a className="btn btn-primary">Shipping</a>
-                <Link id="btn_view" to='/shipping'>
-                    Shipping
-                </Link>
-            </div>
-
-        </div>
-    )
-}
+                <PaypalButton
+                    total={total}
+                    tranSuccess={tranSuccess} /> */}

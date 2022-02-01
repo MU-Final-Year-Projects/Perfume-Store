@@ -152,6 +152,22 @@ const userController = {
         }
     },
 
+    addShippingAddress: async (req, res) => {
+        try {
+            const user = await Users.findById(req.user.id)
+            if (!user) return res.status(400).json({ msg: "User does not exist." })
+
+            await Users.findOneAndUpdate({ _id: req.user.id }, {
+                shippingAddress: req.body.shippingAddress
+            })
+
+            return res.json({ msg: "Added to cart" })
+
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
+
     history: async (req, res) => {
         try {
             const history = await Payments.find({ user_id: req.user.id })
@@ -165,7 +181,7 @@ const userController = {
 }
 
 const createAccessToken = (user) => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '11m' })
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
 }
 
 const createRefreshToken = (user) => {
