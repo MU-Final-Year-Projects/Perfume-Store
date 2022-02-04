@@ -74,7 +74,7 @@ function Dashboard() {
                                 <a class="nav-link" href="/category">Categories</a>
                             </li>
                             <li class="nav">
-                                <a class="nav-link" href="/history">Order History</a>
+                                <a class="nav-link" href="/hist">Order History</a>
                             </li>
                             {/* <li class="nav">
                                 <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>

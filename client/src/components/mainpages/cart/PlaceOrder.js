@@ -12,6 +12,7 @@ const PlaceOrder = () => {
 
 
     useEffect(() => {
+
         const getTotal = () => {
             const total = cart.reduce((prev, item) => {
                 return prev + (item.price * item.quantity)
@@ -33,11 +34,14 @@ const PlaceOrder = () => {
 
     const tranSuccess = async (payment) => {
 
+        var retrievedObject = localStorage.getItem('shipping');
+        const shippingAddress = JSON.parse(retrievedObject);
         const { paymentID, address } = payment;
-
-        await axios.post('/api/payment', { cart, paymentID, address }, {
+        // alert("getting payment");
+        await axios.post('/api/payment', { cart, paymentID, address, shippingAddress }, {
             headers: { Authorization: token }
         })
+        // alert("ended");
 
         setCart([])
         addToCart([])
@@ -49,7 +53,7 @@ const PlaceOrder = () => {
     return (
         <div className='container'>
             <div >
-                <h2 className=' mb-5'>ORDER ITEM</h2>
+                <h2 className=' mb-5'>Place Order</h2>
                 {
                     cart.map(product => (
                         <div className='  d-flex ' >

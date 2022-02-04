@@ -27,19 +27,21 @@ export default function OrderHistory() {
             }
             getHistory()
         }
-    }, [token, isAdmin, setHistory])
+    }, [token, isAdmin, history])
 
     return (
-        <div className="history-page">
-            <h2>History</h2>
+        <div className="history-page container">
+            {/* <h2>History</h2> */}
 
-            <h4>You have {history.length} ordered</h4>
+            <h4>You have {history.length} order</h4>
 
-            <table>
+            <table className='table table-striped'>
                 <thead>
                     <tr>
+
                         <th>Payment ID</th>
                         <th>Date of Purchased</th>
+                        <th>Deliverd</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -50,7 +52,8 @@ export default function OrderHistory() {
                                 <td>{items.paymentID}</td>
 
                                 <td>{new Date(items.createdAt).toLocaleDateString()}</td>
-                                <td><Link to={`/history/${items._id}`}>View</Link></td>
+                                <td>{items.is_deliverd ? "Product Delivered" : "Pending"}</td>
+                                <td><Link to={`/hist/${items._id}`}>View</Link></td>
                             </tr>
                         ))
                     }

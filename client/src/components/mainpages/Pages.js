@@ -37,7 +37,7 @@ export default function Pages() {
             <Switch>
                 <Route exact path="/"  >
                     <Header />
-                    <Popular_Product slides={SliderData} />
+                    {/* <Popular_Product slides={SliderData} /> */}
 
                     {/* <Banner /> */}
 
@@ -62,8 +62,11 @@ export default function Pages() {
                 <Route path="/create_product" exact component={isAdmin ? CreateProduct : NotFound} />
                 <Route path="/edit_product/:id" exact component={isAdmin ? CreateProduct : NotFound} />
 
-                <Route path="/history" exact component={isAdmin ? OrderHistory : NotFound} />
-                <Route path="/history/:id" exact component={isAdmin ? OrderDetails : NotFound} />
+                {/* <Route path="/hist" exact component={isAdmin ? OrderHistory : NotFound} />
+                <Route path="/hist/:id" exact component={isAdmin ? OrderDetails : NotFound} /> */}
+
+                <Route path="/hist" exact component={OrderHistory} />
+                <Route path="/hist/:id" exact component={OrderDetails} />
 
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/shipping" exact component={Shipping} />

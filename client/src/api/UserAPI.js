@@ -7,8 +7,7 @@ export default function UserAPI(token) {
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
     const [user, setuser] = useState([])
-
-    // const [callback, setCallback] = useState(false)
+    const [callback, setCallback] = useState(false)
 
     useEffect(() => {
         if (token) {
@@ -18,10 +17,10 @@ export default function UserAPI(token) {
                         headers: { Authorization: token }
                     })
                     setIsLogged(true)
-                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+                    res.data.user.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                     //  console.log(res)
 
-                    setCart(res.data.cart)
+                    setCart(res.data.user.cart)
 
                 } catch (err) {
                     alert(err.response.data.msg)
@@ -34,31 +33,31 @@ export default function UserAPI(token) {
     }, [token])
 
 
-    // useEffect(() => {
-    //     if (token) {
-    //         const getHistory = async () => {
-    //             if (isAdmin) {
-    //                 const res = await axios.get('/api/payment', {
-    //                     headers: { Authorization: token }
-    //                 })
+    useEffect(() => {
+        if (token) {
+            const getHistory = async () => {
+                if (isAdmin) {
+                    const res = await axios.get('/api/payment', {
+                        headers: { Authorization: token }
+                    })
 
-    //                 setHistory(res.data)
+                    setHistory(res.data)
 
-    //             } else {
+                } else {
 
-    //                 const res = await axios.get('/user/history', {
-    //                     headers: { Authorization: token }
-    //                 })
+                    const res = await axios.get('/user/history', {
+                        headers: { Authorization: token }
+                    })
 
-    //                 setHistory(res.data)
-    //             }
+                    setHistory(res.data)
+                }
 
-    //         }
+            }
 
-    //         getHistory()
+            getHistory()
 
-    //     }
-    // }, [token, callback, isAdmin])
+        }
+    }, [token, callback, isAdmin])
 
 
     const addCart = async (product) => {
@@ -87,8 +86,8 @@ export default function UserAPI(token) {
         cart: [cart, setCart],
         addCart: addCart,
         history: [history, setHistory],
-        user: [user, setuser]
-        // callback: [callback, setCallback]
+        user: [user, setuser],
+        callback: [callback, setCallback]
     }
 
 

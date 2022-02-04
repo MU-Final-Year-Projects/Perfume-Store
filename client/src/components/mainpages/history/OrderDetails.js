@@ -1,11 +1,18 @@
+import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { GlobalState } from '../../../GlobalState'
 
-export default function OrderDetails() {
+export default function OrderDetails(props) {
+
     const state = useContext(GlobalState)
     const [history] = state.userAPI.history
+
+    const [isAdmin] = state.userAPI.isAdmin
+
+    const [token] = state.token
     const [orderDetails, setOrderDetails] = useState([])
+    const [isDeliverd, setIsDeliverd] = useState([]);
 
     const params = useParams()
 
@@ -19,10 +26,38 @@ export default function OrderDetails() {
     console.log(orderDetails)
 
     if (orderDetails.length === 0) return null;
+    const submitDelivery = (e) => {
+        const order_id = orderDetails._id;
+        e.preventDefault();
+        const res = axios.post('/api/payment/delivery', { order_id: order_id }, {
+            headers: { Authorization: token }
+        })
+        props.history.push('/hist');
+
+
+    }
 
     return (
-        <div className="history-page">
-            <table>
+        <div className="history-page container mt-5">
+            {
+                !isAdmin ? null :
+
+                    <form onSubmit={submitDelivery}>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={orderDetails.is_deliverd ? 'checked' : null} />
+                            <label class="form-check-label" for="flexCheckDefault">
+                                delivered
+                            </label>
+                        </div>
+                        {
+                            orderDetails.is_deliverd ? null :
+                                <>
+                                    <button type="submit" className="btn ">confirm</button>
+                                </>
+                        }
+                    </form>
+            }
+            {/* <table>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -39,13 +74,35 @@ export default function OrderDetails() {
                         <td>{orderDetails.address.country_code}</td>
                     </tr>
                 </tbody>
+            </table> */}
+
+            <table className='table table-striped'>
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Postal Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{orderDetails.shippingAddress ? orderDetails.shippingAddress.address : null}</td>
+                        <td>{orderDetails.shippingAddress ? orderDetails.shippingAddress.phone : null}</td>
+                        <td>{orderDetails.shippingAddress ? orderDetails.shippingAddress.country : null}</td>
+                        <td>{orderDetails.shippingAddress ? orderDetails.shippingAddress.city : null}</td>
+                        <td>{orderDetails.shippingAddress ? orderDetails.shippingAddress.postalCode : null}</td>
+
+                    </tr>
+                </tbody>
             </table>
 
-            <table style={{ margin: "30px 0px" }}>
+            <table className='table table-striped ' style={{ margin: "70px 0px" }}>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Products</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
@@ -57,7 +114,7 @@ export default function OrderDetails() {
                                 <td><img src={item.images.url} alt="" /></td>
                                 <td>{item.title}</td>
                                 <td>{item.quantity}</td>
-                                <td>$ {item.price * item.quantity}</td>
+                                <td>&#2547; {item.price * item.quantity}</td>
                             </tr>
                         ))
                     }

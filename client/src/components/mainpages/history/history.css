@@ -12,7 +12,7 @@
     width: 100%;
 }
 .history-page table,th,tr,td{
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-collapse: collapse;
 }
 th, td{
@@ -26,6 +26,6 @@ table a{
 
 .history-page img{
     width: 70px;
-    height: 100px;
-    object-fit: cover;
+    height: 70px;
+    /* object-fit: cover; */
 }

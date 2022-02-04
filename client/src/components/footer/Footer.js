@@ -45,8 +45,8 @@ export default function Footer() {
 
                     </div>
                     <div class="">
-                        &copy; 2021
-            </div>
+                        &copy; 2022
+                    </div>
                 </section>
             </footer>
         </>

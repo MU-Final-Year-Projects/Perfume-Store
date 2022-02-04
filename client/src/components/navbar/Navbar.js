@@ -16,6 +16,7 @@ export default function Navbar() {
     const [cart] = state.userAPI.cart
     // const [menu, setMenu] = useState(false)
     const [search, setSearch] = state.productsAPI.search
+    const [history, setHistory] = state.userAPI.history
 
 
     const logoutUser = async () => {
@@ -42,7 +43,7 @@ export default function Navbar() {
     const loggedRouter = () => {
         return (
             <>
-                {/* <li className="nav-item "><Link class="nav-link" to="/about">History</Link></li> */}
+                {/* <li className="nav-item "><Link class="nav-link" to="/hist">History</Link></li> */}
                 <li className="nav-item "><Link class="nav-link" to="/about">Profile</Link></li>
                 <li className="nav-item "><Link class="nav-link" to="/" onClick={logoutUser}><i class="fas fa-sign-out-alt"></i><p className="logout">Log-out</p></Link></li>
             </>
@@ -77,9 +78,9 @@ export default function Navbar() {
 
 
 
-                        <li className="nav-item ">
+                        {/* <li className="nav-item ">
                             <NavLink class="nav-link shop" to="/">{isAdmin ? <i class="fab fa-shopify"></i> : <i class="fab fa-shopify"></i>}</NavLink>
-                        </li>
+                        </li> */}
 
 
 

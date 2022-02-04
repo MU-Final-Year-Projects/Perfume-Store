@@ -8,24 +8,23 @@ const userController = {
     register: async (req, res) => {
 
         try {
-            const { firstName, lastName, email, mobile, password } = req.body;
+            const { firstName, lastName, email, password } = req.body;
 
             const user = await Users.findOne({ email })
-            const mobile_check = await Users.findOne({ mobile })
+
             if (user) return res.status(400).json({ msg: "The email already exists." });
-            if (mobile_check) return res.status(400).json({ msg: "The Number already exists." });
+
 
             if (password.length < 6)
                 return res.status(400).json({ msg: "Password is at least 6 characters long." })
-            if (mobile.length < 11)
-                return res.status(400).json({ msg: "Incorrect Number." })
+
 
 
 
             // Password Encryption
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
-                firstName, lastName, email, mobile, password: passwordHash
+                firstName, lastName, email, password: passwordHash
             })
 
 
@@ -118,9 +117,10 @@ const userController = {
         try {
             // res.json(req.user)
             const user = await Users.findById(req.user.id).select('-password')
+            const payments = await Payments.find();
             if (!user) return res.status(400).json({ msg: "User does not exist." })
             // console.log(user)
-            res.json(user)
+            res.json({ user: user, payments: payments });
 
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -181,7 +181,7 @@ const userController = {
 }
 
 const createAccessToken = (user) => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' })
 }
 
 const createRefreshToken = (user) => {

@@ -8,11 +8,9 @@ const paymentSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
     },
     email: {
         type: String,
-        required: true
     },
     paymentID: {
         type: String,
@@ -23,8 +21,7 @@ const paymentSchema = new mongoose.Schema({
         required: true
     },
     shippingAddress: {
-        type: Object,
-        required: true
+        type: Object
     },
     cart: {
         type: Array,
@@ -32,17 +29,15 @@ const paymentSchema = new mongoose.Schema({
     },
 
     is_deliverd: {
-        type: Boolean,
-        default: false
+        type: Boolean
     },
     deliverd_at: {
-        type: String,
-        null: true
+        type: String
+
     },
 
     status: {
-        type: Boolean,
-        default: false
+        type: Boolean
     }
 
 }, {

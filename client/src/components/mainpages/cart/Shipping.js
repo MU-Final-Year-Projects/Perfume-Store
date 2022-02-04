@@ -9,19 +9,21 @@ function Shipping({ history }) {
     const [token] = state.token
     const [cart, setCart] = state.userAPI.cart
 
-    const [shippingAddress, setShipping_address] = useState({
-        phone: '',
-        address: '',
-        country: '',
-        city: '',
-        postalCode: ''
-    });
 
-    const addShippingAddress = async () => {
-        await axios.patch('/user/addShippingAddress', { shippingAddress }, {
-            headers: { Authorization: token }
-        })
-    }
+    var retrievedObject = localStorage.getItem('shipping');
+    const shipping_values = JSON.parse(retrievedObject);
+    console.log("SSSSS", shipping_values);
+    const [shippingAddress, setShipping_address] = useState({
+        phone: shipping_values ? shipping_values.phone : null,
+        address: shipping_values ? shipping_values.address : null,
+        country: shipping_values ? shipping_values.country : null,
+        city: shipping_values ? shipping_values.city : null,
+        postalCode: shipping_values ? shipping_values.postalCode : null
+        // await axios.patch('/user/addShippingAddress', { shippingAddress }, {
+        //     headers: { Authorization: token }
+        // })
+        //localStorage.setItem("shipping", shippingAddress);
+    })
 
     const onSubmit = (e) => {
         if (!shippingAddress.phone) {
@@ -34,8 +36,9 @@ function Shipping({ history }) {
 
         }
         e.preventDefault();
-        addShippingAddress();
-        alert("i am going");
+        localStorage.removeItem('shipping')
+        localStorage.setItem("shipping", JSON.stringify(shippingAddress));
+
         history.push('/place_order');
     }
 
@@ -58,15 +61,15 @@ function Shipping({ history }) {
             */}
             <div className="col-6">
                 <label for="inputPhone" className="form-label">Phone</label>
-                <input type="text" className="form-control" id="iphone" name="phone" placeholder="017********" onChange={onChangeInput} />
+                <input type="text" className="form-control" id="iphone" name="phone" placeholder="017********" value={shippingAddress.phone} onChange={onChangeInput} />
             </div>
             <div className="col-6">
                 <label for="inputAddress" className="form-label ">Address</label>
-                <input type="text" className="form-control " id="inputAddress" name="address" placeholder="1234 Main St" onChange={onChangeInput} />
+                <input type="text" className="form-control " id="inputAddress" name="address" placeholder="1234 Main St" value={shippingAddress.address} onChange={onChangeInput} />
             </div>
             <div className="col-md-4">
                 <label for="inputCity" className="form-label">Country</label>
-                <input type="text" className="form-control" name='country' id="inputCity" onChange={onChangeInput} />
+                <input type="text" className="form-control" name='country' id="inputCity" value={shippingAddress.country} onChange={onChangeInput} />
             </div>
             {/* <div className="col-md-4">
                 <label for="inputState" className="form-label">City</label>
@@ -78,16 +81,16 @@ function Shipping({ history }) {
             </div> */}
             <div className="col-md-4">
                 <label for="inputCity" className="form-label">City</label>
-                <input type="text" className="form-control" name="city" id="inputCity" onChange={onChangeInput} />
+                <input type="text" className="form-control" name="city" id="inputCity" value={shippingAddress.city} onChange={onChangeInput} />
             </div>
 
             <div className="col-md-4">
                 <label for="inputZip" className="form-label">Postal Code</label>
-                <input type="text" className="form-control" name='postalCode' id="inputZip" onChange={onChangeInput} />
+                <input type="text" className="form-control" name='postalCode' id="inputZip" value={shippingAddress.postalCode} onChange={onChangeInput} />
             </div>
 
             <div className="col-12">
-                <button type="submit" className="btn btn-primary">Continue</button>
+                <button type="submit" className="btn btn-dark">Continue</button>
             </div>
         </form>
     </div>;

@@ -6,7 +6,7 @@ import { use } from 'bcrypt/promises'
 
 function Register() {
     const [user, setUser] = useState({
-        firstName: '', lastName: '', email: '', mobile: '', password: '', password2: ''
+        firstName: '', lastName: '', email: '', password: '', password2: ''
     })
 
     const onChangeInput = e => {
@@ -51,9 +51,9 @@ function Register() {
                     placeholder="Email" value={user.email} onChange={onChangeInput}
                     className="form-control form-control-lg mb-4 input" />
 
-                <input type="tel" name="mobile" required
+                {/* <input type="tel" name="mobile" required
                     placeholder="01********" value={user.mobile} onChange={onChangeInput}
-                    className="form-control form-control-lg mb-4 input" />
+                    className="form-control form-control-lg mb-4 input" /> */}
 
                 <input type="password" name="password" required autoComplete="on"
                     placeholder="Password" value={user.password} onChange={onChangeInput}
