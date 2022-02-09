@@ -25,7 +25,7 @@ export default function BtnRender({ product, deleteProduct }) {
                             </Link>
                         </div>
                     </>
-                    : !product.countInStock ? <p>Out of stock</p> :
+                    : !product.countInStock ? <p className='fx-4 fw-bold stock ps-1'>Out Of Stock</p> :
                         <>
                             <div className="overlay">
                                 <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>

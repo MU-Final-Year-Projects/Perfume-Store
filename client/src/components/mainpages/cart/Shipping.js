@@ -61,7 +61,7 @@ function Shipping({ history }) {
             */}
             <div className="col-6">
                 <label for="inputPhone" className="form-label">Phone</label>
-                <input type="text" className="form-control" id="iphone" name="phone" placeholder="017********" value={shippingAddress.phone} onChange={onChangeInput} />
+                <input type="number" className="form-control" id="iphone" name="phone" placeholder="017********" value={shippingAddress.phone} onChange={onChangeInput} />
             </div>
             <div className="col-6">
                 <label for="inputAddress" className="form-label ">Address</label>

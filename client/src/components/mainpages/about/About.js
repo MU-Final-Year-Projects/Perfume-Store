@@ -42,19 +42,21 @@ function About() {
                 {/* <h4 className=''>Welcome</h4> */}
 
 
-                <div class="" height={400} width={200}>
-                    {/* <img src='' alt='' height={200} width={200} /> */}
+                <div className='d-flex pb-4'>
+                    <div class="" height={400} width={200}>
+                        {/* <img src='' alt='' height={200} width={200} /> */}
 
-                    <i class="fas fa-user-circle  fs-1 mx-5" ></i>
+                        <i class="fas fa-user-circle  fs-1 mx-5" ></i>
+                    </div>
+                    <div class="">
+
+                        {/* <i class="fas fa-user-circle fs-1 p-5 m-5"></i> */}
+                        <h3>{user.firstName}  {user.lastName}</h3>
+                        <p>{user.email}</p>
+
+                    </div>
                 </div>
-                <div class="">
-
-                    {/* <i class="fas fa-user-circle fs-1 p-5 m-5"></i> */}
-                    <h3>{user.firstName}  {user.lastName}</h3>
-                    <p>{user.email}</p>
-
-                </div>
-                <div className="">
+                <div className="mt-4">
                     {/* {
 
                             payments && payments.map((payment, ind) => payment.user_id == user._id ?

@@ -11,7 +11,7 @@ const initialState = {
     title: '',
     price: 0,
     description: '',
-    content: '',
+    // content: '',
     countInStock: 0,
     category: '',
     _id: ''
@@ -180,11 +180,11 @@ export default function CreateProduct() {
                         value={product.description} rows="5" onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                {/* <div className="row">
                     <label htmlFor="content">Content</label>
                     <textarea type="text" name="content" id="content" required
                         value={product.content} rows="7" onChange={handleChangeInput} />
-                </div>
+                </div> */}
                 <div className="row">
                     <label htmlFor="countInStock">Count In Stock</label>
                     <input value={product.countInStock} type="number" name="countInStock" id="countInStock" onChange={handleChangeInput} required />

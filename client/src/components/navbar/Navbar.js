@@ -44,7 +44,10 @@ export default function Navbar() {
         return (
             <>
                 {/* <li className="nav-item "><Link class="nav-link" to="/hist">History</Link></li> */}
-                <li className="nav-item "><Link class="nav-link" to="/about">Profile</Link></li>
+                {
+                    isAdmin ? ''
+                        : <li className="nav-item "><Link class="nav-link" to="/about"><i class="fas fa-user  rounded-circle"></i> <p className="logout">Profile</p></Link></li>
+                }
                 <li className="nav-item "><Link class="nav-link" to="/" onClick={logoutUser}><i class="fas fa-sign-out-alt"></i><p className="logout">Log-out</p></Link></li>
             </>
         )

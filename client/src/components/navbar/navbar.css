@@ -28,7 +28,7 @@
 
 
 .nav-link:hover{
-   border-bottom: 2px solid rgb(17, 16, 16) ;
+   /* border-bottom: 2px solid rgb(17, 16, 16) ; */
    color: rgb(17, 16, 17) ;
    transform: scale(1.1);
 }
@@ -36,7 +36,7 @@
 .nav-img{
     width:140px;
     /* margin-left:500px; */
-    margin-left:400px;
+    margin-left:500px;
     margin-top: 1px;
     
 
@@ -47,6 +47,10 @@
     border: none;
     /* border-bottom: 2px solid ; */
     outline: none;
+}
+
+.search-input:hover{
+    border-bottom: 2px solid rgb(17, 16, 16) ;
 }
 
 .menu-active{

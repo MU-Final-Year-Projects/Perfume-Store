@@ -6,14 +6,16 @@
    
     transition: .4s;
     overflow: hidden;
-    float: left;
-    margin: 10px;
-    margin-left: 70px;
+    /* float: left; */
+    margin-left: 20px;
+    margin-right: 20px;
+    /* margin-left: 70px; */
     margin-top: 40px;
     height: 279px;
-    width: 230px;
+    /* width: 240px; */
     border:none;
     background-color: rgb(252, 248, 248);
+    
     
 }
 
@@ -70,4 +72,10 @@
     color: black;
     background-image: linear-gradient(to right,#fc7095,#ff88a7,#fafafa ) ;
 
+}
+
+.stock{
+    background-image: linear-gradient(to right,#fa96b1,#fab1c5,#fafafa ) ;
+    display: inline-block;
+    border-radius: 10px;
 }

@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar'
 import Pages from './components/mainpages/Pages'
 import Header from './components/header/Header'
 
+
 function App() {
   return (
     <DataProvider>
@@ -15,6 +16,7 @@ function App() {
           <Navbar />
           {/* <Header /> */}
           <Pages />
+
         </div>
       </Router>
     </DataProvider>

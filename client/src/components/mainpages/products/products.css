@@ -73,3 +73,11 @@
     margin-top: 100px;
     margin-bottom:40px;
 }
+
+/* ////////////////////// */
+
+.load-btn{
+    background-image: linear-gradient(to right,#fa9ab4,#fdadc2,#fad8d8 ) ;
+    /* font-weight: bold; */
+    font-size: 16px;
+}

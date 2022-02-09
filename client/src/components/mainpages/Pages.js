@@ -43,7 +43,7 @@ export default function Pages() {
 
                     <Route path="/" exact component={Products} />
 
-                    <Banner />
+                    {/* <Banner /> */}
                     <Footer />
 
 

@@ -89,14 +89,28 @@ export default function Products() {
 
 
             {/* //------------------------------------------ */}
-            <div>
-                {
-                    products.slice(0, 8).map(product => {
-                        return <ProductItem key={product._id} product={product} deleteProduct={deleteProduct} />
-                        // isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
-                    })
-                }
+            <div className="container-fluid ">
+                <div className="row">
+                    {
+                        products.map(product => {
+                            return (
+                                <>
+                                    <div className="col-3">
+                                        <ProductItem key={product._id} product={product} deleteProduct={deleteProduct} />
+                                        {/* s */}
+                                    </div>
+                                </>
+                            )
+                        })
+                    }
+                </div>
+
+
             </div>
+            <LoadMore />
+
+
+
 
             {/* <Pagination
                 postsPerPage={postsPerPage}
@@ -105,14 +119,14 @@ export default function Products() {
             /> */}
 
 
-            {/* <LoadMore />
-            {products.length === 0 && <Loading />} */}
+
+            {/* {<Loading />} */}
 
 
-            <div>
-                {/* <Banner />
-                <Footer /> */}
-            </div>
+            {/* <div >
+                <Banner />
+                <Footer />
+            </div> */}
 
         </>
 

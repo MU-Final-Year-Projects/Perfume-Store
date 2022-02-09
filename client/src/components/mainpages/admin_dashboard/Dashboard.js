@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { GlobalState } from '../../../GlobalState'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import OrderHistory from '../history/OrderHistory'
 
 function Dashboard() {
     // const params = useParams()
@@ -65,8 +66,8 @@ function Dashboard() {
         <>
             <div className='container'>
                 <div className='row my-5'>
-                    <div className='col-lg-4'>
-                        <ul class="nav flex-column">
+                    <div className='col-lg-2'>
+                        <ul class="nav flex-column list-group bg-light">
                             <li class="nav">
                                 <a class="nav-link active" aria-current="page" href="/create_product">Create Product</a>
                             </li>
@@ -83,14 +84,17 @@ function Dashboard() {
 
                     </div>
 
-                    <div className='col-lg-4 text-center'>
+                    {/* <div className='col-lg-4 text-center'>
                         <div className='border'>
                             <h1> Order</h1>
                             <span>{history.length}</span>
 
                         </div>
-                    </div>
+                    </div> */}
 
+                    <div className='col-lg-10'>
+                        <  OrderHistory />
+                    </div>
                     {/* <div className='col-lg-4'>
                         <div className='border'>
                             <h1> Order</h1>
