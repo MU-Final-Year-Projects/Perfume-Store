@@ -1,18 +1,18 @@
 .detail{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 50px;
-    font-size: 150%;
+    font-size: 130%;
 }
 .detail img{
     max-width: 320px;
-    width: 100%;
-    margin: 20px;
-    height: 370px;
-    object-fit: cover;
-    display: block;
+    width: 270px;
+    /* margin: 20px; */
+    height: 270px;
+    /* object-fit: cover;
+    display: block; */
     
 }
 .box-detail{
@@ -22,7 +22,7 @@
 }
 .box-detail .row{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: ; */
     align-items: center;
 }
 .box-detail h2{

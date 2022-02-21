@@ -1,8 +1,11 @@
 
-const Users = require('../models/userModel')
-const Payments = require('../models/paymentModel')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const Users = require('../models/userModel');
+const Payments = require('../models/paymentModel');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const token = require('../models/token');
+const sendEmail = require('../utils/sendEmail');
+const crypto = require("crypto");
 
 const userController = {
     register: async (req, res) => {
@@ -12,14 +15,11 @@ const userController = {
 
             const user = await Users.findOne({ email })
 
-            if (user) return res.status(400).json({ msg: "The email already exists." });
+            if (user) return res.status(400).json({ msg: " email already exists." });
 
 
             if (password.length < 6)
                 return res.status(400).json({ msg: "Password is at least 6 characters long." })
-
-
-
 
             // Password Encryption
             const passwordHash = await bcrypt.hash(password, 10)
@@ -31,6 +31,9 @@ const userController = {
 
             // Save mongodb
             await newUser.save()
+
+
+
 
             // res.json({ msg: "register succesfull" })
 
@@ -45,8 +48,16 @@ const userController = {
                 maxAge: 7 * 24 * 60 * 60 * 1000 // 7d
 
             })
+            console.log("I am here ---> ");
 
-            res.json({ accesstoken })
+            const id = newUser._id
+            const url = `${process.env.BASE_URL}users/${id}/verify/${accesstoken}`;
+            console.log(url, newUser.email);
+            await sendEmail(newUser.email, "Verify Email", url);
+            res
+                .status(201)
+                .send({ message: "An Email sent to your account please verify" });
+
 
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -54,6 +65,17 @@ const userController = {
     },
 
     //--------------------------------
+
+    verify: async (res, req) => {
+        try {
+            const user = await Users.findOne({ _id: req.params.id });
+            if (!user) return res.status(400).send({ message: "Invalid link" });
+            res.status(200).send({ message: "Email verified successfully" });
+        } catch (error) {
+            res.status(500).send({ message: "Internal Server Error" });
+        }
+
+    },
 
     login: async (req, res) => {
         try {
@@ -64,6 +86,7 @@ const userController = {
 
             const isMatch = await bcrypt.compare(password, user.password)
             if (!isMatch) return res.status(400).json({ msg: "Incorrect password." })
+            // if (!user.verified) return res.status(400).json({ msg: "User is not verified!." })
 
             // If login success , create access token and refresh token
             // res.json({ msg: "login" })

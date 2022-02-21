@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
@@ -23,7 +25,7 @@ export default function UserAPI(token) {
                     setCart(res.data.user.cart)
 
                 } catch (err) {
-                    alert(err.response.data.msg)
+                    toast.warn(err.response.data.msg)
                 }
             }
 
@@ -75,20 +77,31 @@ export default function UserAPI(token) {
             })
 
         } else {
-            alert("This product has been added to cart.")
+            toast.warn("This product has been added to cart.")
         }
     }
 
+    // <div>
+    //     <ToastContainer
+    //         position="top-center" />
+    // </div>
 
-    return {
-        isLogged: [isLogged, setIsLogged],
-        isAdmin: [isAdmin, setIsAdmin],
-        cart: [cart, setCart],
-        addCart: addCart,
-        history: [history, setHistory],
-        user: [user, setuser],
-        callback: [callback, setCallback]
-    }
+    return (
+        {
+
+            isLogged: [isLogged, setIsLogged],
+            isAdmin: [isAdmin, setIsAdmin],
+            cart: [cart, setCart],
+            addCart: addCart,
+            history: [history, setHistory],
+            user: [user, setuser],
+            callback: [callback, setCallback]
+
+
+        }
+
+
+    )
 
 
 

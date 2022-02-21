@@ -4,6 +4,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import PaypalButton from './PaypalButton'
 import './cart.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Cart() {
 
@@ -42,7 +44,7 @@ export default function Cart() {
         cart.forEach(item => {
             if (item._id === id) {
                 if (item.countInStock - 1 < item.quantity) {
-                    alert("Out of stock");
+                    toast.dark("Out of stock");
                     return;
                 }
                 item.quantity += 1
@@ -129,6 +131,12 @@ export default function Cart() {
                                 <div className="fs-4 cart-btn amount col-lg-3">
                                     <biv className=" " onClick={() => decrement(product._id)} >  <i class="fas fa-minus-circle"></i> </biv>
 
+                                    {/* <input type="number"
+                                        min="1"
+                                        placeholder={product.quantity} onClick={() => decrement(product._id)}
+                                        className="form-control form-control-lg mb-4 input" /> */}
+
+
                                     <biv className=" " onClick={() => increment(product._id)} ><i class="fas fa-plus-circle"></i> </biv>
                                 </div>
 
@@ -155,6 +163,8 @@ export default function Cart() {
 
             </div>
 
+            <ToastContainer
+                position="top-center" />
         </div >
     )
 }

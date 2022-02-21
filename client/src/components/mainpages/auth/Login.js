@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
 
@@ -25,7 +27,7 @@ export default function Login() {
 
             window.location.href = "/";
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
@@ -67,6 +69,9 @@ export default function Login() {
                     {/* <Link to="/register">Register</Link> */}
                 </div>
             </form>
+
+            <ToastContainer
+                position="top-center" />
         </div>
     )
 }

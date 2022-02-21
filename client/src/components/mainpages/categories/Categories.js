@@ -3,6 +3,8 @@ import { GlobalState } from '../../../GlobalState'
 import axios from 'axios'
 import './category.css'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Categories() {
     const state = useContext(GlobalState)
@@ -21,14 +23,14 @@ export default function Categories() {
                 const res = await axios.put(`/api/category/${id}`, { name: category }, {
                     headers: { Authorization: token }
                 })
-                alert(res.data.msg)
+                toast.warn(res.data.msg)
 
 
             } else {
                 const res = await axios.post('/api/category', { name: category }, {
                     headers: { Authorization: token }
                 })
-                alert(res.data.msg)
+                toast.warn(res.data.msg)
             }
             setOnEdit(false)
             setCategory('')
@@ -52,10 +54,10 @@ export default function Categories() {
             const res = await axios.delete(`/api/category/${id}`, {
                 headers: { Authorization: token }
             })
-            alert(res.data.msg)
+            toast.warn(res.data.msg)
             setCallback(!callback)
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
@@ -86,7 +88,8 @@ export default function Categories() {
                     ))
                 }
             </div>
-
+            <ToastContainer
+                position="top-center" />
         </div>
     )
 }

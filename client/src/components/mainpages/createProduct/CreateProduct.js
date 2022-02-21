@@ -4,6 +4,8 @@ import { GlobalState } from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
 import { useHistory, useParams } from 'react-router-dom'
 import './CreateProduct.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const initialState = {
@@ -59,17 +61,17 @@ export default function CreateProduct() {
     const handleUpload = async e => {
         e.preventDefault()
         try {
-            if (!isAdmin) return alert("You're not an admin")
+            if (!isAdmin) return toast.warn("You're not an admin")
             const file = e.target.files[0]
 
 
-            if (!file) return alert("File not exist.")
+            if (!file) return toast.warn("File not exist.")
 
             if (file.size > 1024 * 1024) // 1mb
-                return alert("Size too large!")
+                return toast.warn("Size too large!")
 
             if (file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-                return alert("File format is incorrect.")
+                return toast.warn("File format is incorrect.")
 
             let formData = new FormData()
             formData.append('file', file)
@@ -84,13 +86,13 @@ export default function CreateProduct() {
 
 
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
     const handleDestroy = async () => {
         try {
-            if (!isAdmin) return alert("You're not an admin")
+            if (!isAdmin) return toast.warn("You're not an admin")
             setLoading(true)
             await axios.post('/api/destroy', { public_id: images.public_id }, {
                 headers: { Authorization: token }
@@ -98,7 +100,7 @@ export default function CreateProduct() {
             setLoading(false)
             setImages(false)
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
@@ -110,8 +112,8 @@ export default function CreateProduct() {
     const handleSubmit = async e => {
         e.preventDefault()
         try {
-            if (!isAdmin) return alert("You're not an admin")
-            if (!images) return alert("No Image Upload")
+            if (!isAdmin) return toast.warn("You're not an admin")
+            if (!images) return toast.warn("No Image Upload")
 
             if (onEdit) {
                 await axios.put(`/api/products/${product._id}`, { ...product, images }, {
@@ -128,7 +130,7 @@ export default function CreateProduct() {
 
             history.push("/")
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
@@ -187,7 +189,7 @@ export default function CreateProduct() {
                 </div> */}
                 <div className="row">
                     <label htmlFor="countInStock">Count In Stock</label>
-                    <input value={product.countInStock} type="number" name="countInStock" id="countInStock" onChange={handleChangeInput} required />
+                    <input value={product.countInStock} type="number" name="countInStock" id="countInStock" onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
@@ -207,7 +209,8 @@ export default function CreateProduct() {
                 <button type="submit">{onEdit ? "Update" : "Create"}</button>
 
             </form>
-
+            <ToastContainer
+                position="top-center" />
         </div>
     )
 }

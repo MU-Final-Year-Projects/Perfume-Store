@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './login.css'
 import { use } from 'bcrypt/promises'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
     const [user, setUser] = useState({
@@ -17,7 +19,7 @@ function Register() {
     const registerSubmit = async e => {
         e.preventDefault()
         if (user.password != user.password2) {
-            alert("Your two passwords do not match!!!!");
+            toast.warn("Your password does not match!!!!");
             return;
         }
         try {
@@ -30,7 +32,7 @@ function Register() {
 
             window.location.href = "/";
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.warn(err.response.data.msg)
         }
     }
 
@@ -75,6 +77,8 @@ function Register() {
                     {/* <Link to="/login">Login</Link> */}
                 </div>
             </form>
+            <ToastContainer
+                position="top-center" />
         </div>
     )
 }

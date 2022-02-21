@@ -9,6 +9,8 @@ import LoadMore from './LoadMore'
 import Banner from '../../banner/Banner'
 import Footer from '../../footer/Footer'
 import Pagination from './Pagination'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Products() {
     const state = useContext(GlobalState)
@@ -19,17 +21,7 @@ export default function Products() {
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
 
-    //---------------------------------------------
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [postsPerPage] = useState(10);
 
-    // Get current posts
-    // const indexOfLastPost = currentPage * postsPerPage;
-    // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // const currentPosts = Products.slice(indexOfFirstPost, indexOfLastPost);
-    // Change page
-    // const paginate = pageNumber => setCurrentPage(pageNumber);
-    //----------------------------------------
 
     const handleCheck = (id) => {
         products.forEach(product => {
@@ -54,7 +46,7 @@ export default function Products() {
             setCallback(!callback)
 
         } catch (err) {
-            alert(err.response.data.msg)
+            toast.success(err.response.data.msg)
         }
     }
 
@@ -127,7 +119,8 @@ export default function Products() {
                 <Banner />
                 <Footer />
             </div> */}
-
+            <ToastContainer
+                position="top-center" />
         </>
 
 

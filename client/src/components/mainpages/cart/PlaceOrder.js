@@ -3,6 +3,8 @@ import { GlobalState } from '../../../GlobalState';
 import PaypalButton from './PaypalButton';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PlaceOrder = () => {
     const state = useContext(GlobalState)
@@ -45,7 +47,7 @@ const PlaceOrder = () => {
 
         setCart([])
         addToCart([])
-        alert("You have successfully placed an order.")
+        toast.success("You have successfully placed an order.")
 
     }
 
@@ -77,7 +79,10 @@ const PlaceOrder = () => {
                 total={total}
                 tranSuccess={tranSuccess} /> */}
 
-        </div>);
+            <ToastContainer
+                position="top-center" />
+        </div>
+    );
 }
 
 export default PlaceOrder;
