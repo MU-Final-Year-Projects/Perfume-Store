@@ -1,4 +1,5 @@
-const nodemailer = require("nodemailer");
+
+const nodemailer = require('nodemailer');
 
 
 module.exports = async (email, subject, text) => {
@@ -20,8 +21,9 @@ module.exports = async (email, subject, text) => {
             port: 587,
             secure: false,
             auth: {
-                user: 'tamimayesmin84@gmail.com',
-                pass: 'tnoowlmqofyefraa'
+                user: 'yesmintamima1@gmail.com',
+                //pass: 'tnoowlmqofyefraa'
+                pass: 'sxeiufstsqnmaphq'
             }
         });
 
@@ -42,3 +44,4 @@ module.exports = async (email, subject, text) => {
         return error;
     }
 };
+

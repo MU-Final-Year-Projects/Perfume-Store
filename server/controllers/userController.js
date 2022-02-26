@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const token = require('../models/token');
 const sendEmail = require('../utils/sendEmail');
+const sendMail = require('../utils/sendMail');
 const crypto = require("crypto");
 
 const userController = {
@@ -53,7 +54,7 @@ const userController = {
             const id = newUser._id
             const url = `${process.env.BASE_URL}users/${id}/verify/${accesstoken}`;
             console.log(url, newUser.email);
-            await sendEmail(newUser.email, "Verify Email", url);
+            await sendMail(newUser.email, "Verify Email", url);
             res
                 .status(201)
                 .send({ message: "An Email sent to your account please verify" });
